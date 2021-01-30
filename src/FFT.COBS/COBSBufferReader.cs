@@ -10,17 +10,44 @@ namespace FFT.COBS
   using System.Runtime.CompilerServices;
   using System.Threading;
 
+  /// <summary>
+  /// Provides methods for reading COBS-encoded messages from a <see cref="PipeReader"/>.
+  /// https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing.
+  /// </summary>
   public static class COBSBufferReader
   {
-    public static async IAsyncEnumerable<ReadOnlySequence<byte>> ReadMessages(this PipeReader reader, [EnumeratorCancellation] CancellationToken cancellationToken)
+    /// <summary>
+    /// Reads COBS-encoded messages from <paramref name="reader"/> until all data has been consumed and the pipe reader is completed,
+    /// or until the enumeration is canceled by any of the methods demonstrated in the FFT.COBS.Examples project.
+    /// https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing.
+    /// </summary>
+    /// <param name="reader">The <see cref="PipeReader"/> that COBS-encoded messages will be read from.</param>
+    /// <param name="cancellationToken">
+    /// When canceled, the message reading stops. No exception is thrown to the using code.
+    /// </param>
+    public static async IAsyncEnumerable<Memory<byte>> ReadCOBSMessages(this PipeReader reader, [EnumeratorCancellation] CancellationToken cancellationToken = default)
     {
       var buffer = ArrayPool<byte>.Shared.Rent(1024);
       try
       {
         while (true)
         {
-          var readResult = await reader.ReadAsync(cancellationToken);
-          if (readResult.IsCanceled) yield break;
+          ReadResult readResult;
+          try
+          {
+            readResult = await reader.ReadAsync(cancellationToken);
+          }
+          catch (OperationCanceledException)
+          {
+            // Cancellation token was canceled.
+            // Don't rethrow the exception to the calling code, just stop reading and end the enumeration.
+            yield break;
+          }
+
+          // User code called reader.CancelPendingRead()
+          if (readResult.IsCanceled)
+            yield break;
+
           var readBuffer = readResult.Buffer;
           var zeroBytePosition = readBuffer.PositionOf<byte>(0);
           if (zeroBytePosition.HasValue)
@@ -34,13 +61,13 @@ namespace FFT.COBS
             }
 
             var length = Decode(buffer, encodedData);
-            yield return new ReadOnlySequence<byte>(buffer, 0, length);
             reader.AdvanceTo(endOfEncodedData);
+            yield return new Memory<byte>(buffer, 0, length);
           }
           else
           {
-            if (readResult.IsCompleted) yield break;
             reader.AdvanceTo(readBuffer.Start, readBuffer.End);
+            if (readResult.IsCompleted) yield break;
           }
         }
       }

@@ -1,12 +1,24 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
     <IsPackable>true</IsPackable>
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <PackageId>FFT.COBS</PackageId>
+    <Summary>Fast, allocation-free implementation of Consistent Overhead Byte Stuffing (COBS) encoding and decoding for pipes and streams.</Summary>
+    <Description>$(Summary)</Description>
+    <Company>True Goodwill</Company>
+    <Authors>True Goodwill</Authors>
+    <PackageProjectUrl>https://github.com/FastFinTech/FFT.COBS</PackageProjectUrl>
+    <RepositoryUrl>$(PackageProjectUrl)</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
+    <PackageTags>time;timestamp</PackageTags>
+    <ApplicationIcon>FFT.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FFT.Disposables" Version="0.0.5" />
     <PackageReference Include="System.IO.Pipelines" Version="5.0.1" />
   </ItemGroup>
 

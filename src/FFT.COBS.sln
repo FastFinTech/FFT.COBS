@@ -19,6 +19,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".sln", ".sln", "{D925D902-2
 		..\version.json = ..\version.json
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FFT.COBS.Examples", "FFT.COBS.Examples\FFT.COBS.Examples.csproj", "{9FF1969C-5A0F-469F-8F51-76B8A86D1BD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{D9C748D4-BE29-4E54-96A2-83EAFA7FB87D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D9C748D4-BE29-4E54-96A2-83EAFA7FB87D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D9C748D4-BE29-4E54-96A2-83EAFA7FB87D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9FF1969C-5A0F-469F-8F51-76B8A86D1BD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9FF1969C-5A0F-469F-8F51-76B8A86D1BD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9FF1969C-5A0F-469F-8F51-76B8A86D1BD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9FF1969C-5A0F-469F-8F51-76B8A86D1BD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

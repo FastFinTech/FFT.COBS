@@ -1,13 +1,17 @@
-using System;
-using System.Buffers;
-using System.Collections.Generic;
-using System.IO.Pipelines;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+// Copyright (c) True Goodwill. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
 
 namespace FFT.COBS.Tests
 {
+  using System;
+  using System.Buffers;
+  using System.Collections.Generic;
+  using System.IO.Pipelines;
+  using System.Linq;
+  using System.Threading;
+  using System.Threading.Tasks;
+  using Microsoft.VisualStudio.TestTools.UnitTesting;
+
   [TestClass]
   public class COBSTests
   {
@@ -15,7 +19,6 @@ namespace FFT.COBS.Tests
 
     static COBSTests()
     {
-      _tests = new();
       var testDefinitions = new (string Data, string Encoded)[]
       {
         ("00",                    "01 01 00"),
@@ -72,7 +75,7 @@ namespace FFT.COBS.Tests
         writer.CommitMessage();
         pipe.Writer.Complete();
         var readResult = await pipe.Reader.ReadAsync();
-        Assert.IsTrue(readResult.IsCompleted); // or our assumption about how the pipe works is wrong.
+        Assert.IsTrue(readResult.IsCompleted);
         var readBuffer = readResult.Buffer;
         Assert.That.SequenceEqual(encoded.AsReadOnlySequence(), readBuffer.Slice(0, encoded.Length));
         pipe.Reader.Complete();
@@ -82,18 +85,10 @@ namespace FFT.COBS.Tests
     [TestMethod]
     public async Task PipeEncoding_AllMessagesTogether()
     {
-      var pipe = new Pipe();
-      using var writer = new COBSBufferWriter(pipe.Writer);
-      foreach (var (data, _) in _tests)
-      {
-        data.AsSpan().CopyTo(writer.GetSpan(data.Length));
-        writer.Advance(data.Length);
-        writer.CommitMessage();
-      }
+      var pipeReader = GetLoadedPipeReader();
 
-      pipe.Writer.Complete();
-      var readResult = await pipe.Reader.ReadAsync();
-      Assert.IsTrue(readResult.IsCompleted); // or our assumption about how the pipe works is wrong.
+      var readResult = await pipeReader.ReadAsync();
+      Assert.IsTrue(readResult.IsCompleted);
       var readBuffer = readResult.Buffer;
       foreach (var (_, encoded) in _tests)
       {
@@ -107,6 +102,61 @@ namespace FFT.COBS.Tests
     [TestMethod]
     public async Task PipeEncoding_AndDecoding()
     {
+      var pipeReader = GetLoadedPipeReader();
+      var enumerator = pipeReader.ReadCOBSMessages(default).GetAsyncEnumerator();
+      foreach (var (data, _) in _tests)
+      {
+        Assert.IsTrue(await enumerator.MoveNextAsync());
+        Assert.That.SequenceEqual(data, enumerator.Current.Span);
+      }
+
+      Assert.IsFalse(await enumerator.MoveNextAsync());
+    }
+
+    [TestMethod]
+    public async Task PipeEncoding_CancellationTokenAndResumeReading()
+    {
+      var pipeReader = GetLoadedPipeReader();
+
+      var count = 0;
+      var messages = new List<byte[]>();
+      using var cts = new CancellationTokenSource();
+
+      // make sure that cancellation works.
+      await foreach (var message in pipeReader.ReadCOBSMessages().WithCancellation(cts.Token))
+      {
+        messages.Add(message.ToArray());
+        if (count++ == 2)
+          cts.Cancel();
+      }
+
+      Assert.AreEqual(3, messages.Count);
+
+      // and the other kind of cancellation
+      await foreach (var message in pipeReader.ReadCOBSMessages())
+      {
+        messages.Add(message.ToArray());
+        if (count++ == 4)
+          pipeReader.CancelPendingRead();
+      }
+
+      Assert.AreEqual(5, messages.Count);
+
+      // now resume reading the rest of the messages (without a cancellation token)
+      await foreach (var message in pipeReader.ReadCOBSMessages())
+      {
+        messages.Add(message.ToArray());
+      }
+
+      // make sure that all messages were read correctly.
+      for (var i = 0; i < _tests.Count; i++)
+      {
+        Assert.IsTrue(_tests[i].Data.SequenceEqual(messages[i]));
+      }
+    }
+
+    private static PipeReader GetLoadedPipeReader()
+    {
       var pipe = new Pipe();
       using var writer = new COBSBufferWriter(pipe.Writer);
       foreach (var (data, _) in _tests)
@@ -117,33 +167,7 @@ namespace FFT.COBS.Tests
       }
 
       pipe.Writer.Complete();
-      var enumerator = pipe.Reader.ReadMessages(default).GetAsyncEnumerator();
-      foreach (var (data, _) in _tests)
-      {
-        Assert.IsTrue(await enumerator.MoveNextAsync());
-        Assert.That.SequenceEqual(new ReadOnlySequence<byte>(data), enumerator.Current);
-      }
-
-      Assert.IsFalse(await enumerator.MoveNextAsync());
+      return pipe.Reader;
     }
-  }
-
-  public static class Extensions
-  {
-    public static void SequenceEqual(this Assert assert, ReadOnlySequence<byte> s1, ReadOnlySequence<byte> s2)
-    {
-      var reader1 = new SequenceReader<byte>(s1);
-      var reader2 = new SequenceReader<byte>(s2);
-      while (reader1.TryRead(out var b1))
-      {
-        Assert.IsTrue(reader2.TryRead(out var b2));
-        Assert.AreEqual(b1, b2);
-      }
-
-      Assert.IsFalse(reader2.TryRead(out _));
-    }
-
-    public static ReadOnlySequence<byte> AsReadOnlySequence(this byte[] buffer)
-      => new ReadOnlySequence<byte>(buffer, 0, buffer.Length);
   }
 }
