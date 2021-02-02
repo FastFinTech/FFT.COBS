@@ -1,0 +1,175 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>TimeZoneCalculator </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="TimeZoneCalculator ">
+    <meta name="generator" content="docfx 2.56.6.0">
+    
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../styles/docfx.vendor.css">
+    <link rel="stylesheet" href="../styles/docfx.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <meta property="docfx:navrel" content="../toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/vs.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script> 
+    <style>    
+      .hljs { white-space: pre; overflow-x: auto; }
+    </style>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="timezonecalculator">TimeZoneCalculator</h1>
+
+<h3 id="api-specification-links">Api specification links</h3>
+<p>The <a href="xref:FFT.TimeStamps.TimeZoneCalculator">TimeZoneCalculator</a> class helps you to:</p>
+<ul>
+<li>Access fast, utilities for converting values between timezones</li>
+<li>Convert <code>DateTime</code> and <code>DateTimeOffset</code> values to <code>TimeStamp</code> and vice-versa.</li>
+</ul>
+<h3 id="basic-usage">Basic usage</h3>
+<p>The static <a href="xref:FFT.TimeStamps.TimeZoneCalculator.Convert(System.TimeZoneInfo,System.TimeZoneInfo,System.Int64)"><code>TimeZoneCalculator.Convert</code></a> method allows you to convert times directly from one timezone to another. This is the slowest utility method available in the library (but much faster than you can find anywhere else), and you would use it in situations where its either not used in a critical hot path, or where you don't know in advance which timezones will be converted.</p>
+<h3 id="timezonecalculatorgetsegment">TimeZoneCalculator.GetSegment</h3>
+<p>The <a href="xref:FFT.TimeStamps.TimeZoneCalculator.TimeZoneSegment"><code>TimeZoneCalculator.TimeZoneSegment</code></a> class is returned by the <a href="xref:FFT.TimeStamps.TimeZoneCalculator.GetSegment(FFT.TimeStamps.TimeStamp)"><code>TimeZoneCalculator.GetSegment(TimeStamp time)</code></a> method and the <a href="xref:FFT.TimeStamps.TimeZoneCalculator.GetSegment(System.Int64,FFT.TimeStamps.TimeKind)"><code>TimeZoneCalculator.GetSegment(long ticks, TimeKind ticksKind)</code></a> method.</p>
+<p>It provides you with a lot of helpful information about a specific period of time in which a timezone's offset remains constant. By obtaining and caching a <code>TimeZoneCalculator.TimeZoneSegment</code> you can speed up your code and create more sophisticated logic.</p>
+<ul>
+<li>The <code>IsInvalid</code> property tells you if the current period of time is actually skipped over by the timezone clock as it flies forward. Typically this happens as Daylight Savings starts.</li>
+<li>The <code>IsAmbiguous</code> property tells you if the current period of time happens twice, as the clock flies backward and then repeats the time period again. Typically this happens when Daylights Savings comes to an end.</li>
+<li>The <code>OffsetTicks</code> property tells you the timezone's offset from Utc timezone during the current period.</li>
+<li>The <code>Next</code> and <code>Previous</code> properties allow you to access the next and previous periods of time without accessing the <code>TimeZoneCalculator.GetSegment</code> method again - this can make your code a lot faster!</li>
+<li>The <code>StartTicks</code> and <code>EndTicks</code> property tells you the start and end of the time period, expressed in ticks in either Utc timezone, or the specific timezone.</li>
+<li>The <code>SegmentKind</code> property tells you which timezone is being used by the <code>StartTicks</code> and <code>EndTicks</code> properties.</li>
+</ul>
+<div class="TIP">
+<h5>Tip</h5>
+<p>The period of time represented by the <code>TimeZoneSegment</code> is EXCLUSIVE of the <code>TimeZoneSegment.EndTicks</code>. In fact, <code>TimeZoneSegment.EndTicks</code> is actually the same as the <code>TimeZoneSegment.StartTicks</code> of the next segment!</p>
+</div>
+<h3 id="basic-examples">Basic examples</h3>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div><h3 id="advanced-examples">Advanced examples</h3>
+<p>Checkout the code for the <a href="https://github.com/FastFinTech/FFT.TimeStamps/blob/main/src/FFT.TimeStamps/ConversionIterators.ToUtcIterator.cs"><code>ToUtcIterator</code></a> class for an example of advanced <code>TimeZoneCalculator.TimeZoneSegment</code> usage.</p>
+<h3 id="benchmarking">Benchmarking</h3>
+<p>The slowest possible conversion methods in <a href="xref:FFT.TimeStamps.TimeZoneCalculator"><code>TimeZoneCalculator</code></a> allows you to perform timezone conversion calculations twice as fast as the in-built methods supplied by the .net framework.</p>
+<p>However, you can also use the same techniques as the Converstion iterators to achieve results more than <a href="conversionIterators.md#benchmarking">32 times faster</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th style="text-align: right;">Mean</th>
+<th style="text-align: right;">Error</th>
+<th style="text-align: right;">StdDev</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>WithTimeZoneInfo</td>
+<td style="text-align: right;">379.9 ns</td>
+<td style="text-align: right;">3.10 ns</td>
+<td style="text-align: right;">2.75 ns</td>
+</tr>
+<tr>
+<td>WithTimeZoneCalculator</td>
+<td style="text-align: right;">125.5 ns</td>
+<td style="text-align: right;">1.46 ns</td>
+<td style="text-align: right;">1.36 ns</td>
+</tr>
+</tbody>
+</table>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>It looks like the sample you are looking for does not exist.</p>
+</div></article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/FastFinTech/FFT.COBS/blob/main/docfx/articles/intro.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="text/javascript" src="../styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+    <script src="//unpkg.com/highlightjs-dotnetconfig@0.9.1/dist/dotnetconfig.min.js"></script>
+  </body>
+</html>

@@ -1,0 +1,315 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>FFT.COBS </title>
+    <meta name="viewport" content="width=device-width">
+    <meta name="title" content="FFT.COBS ">
+    <meta name="generator" content="docfx 2.56.6.0">
+    
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="stylesheet" href="styles/docfx.vendor.css">
+    <link rel="stylesheet" href="styles/docfx.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <meta property="docfx:navrel" content="toc.html">
+    <meta property="docfx:tocrel" content="toc.html">
+    
+    
+    
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/vs.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script> 
+    <style>    
+      .hljs { white-space: pre; overflow-x: auto; }
+    </style>
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+        
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              
+              <a class="navbar-brand" href="index.html">
+                <img id="logo" class="svg" src="logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+        
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div role="main" class="container body-content hide-when-search">
+        <div class="article row grid">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="fftcobs">FFT.COBS</h1>
+
+<p><a href="https://github.com/FastFinTech/FFT.COBS"><img src="https://img.shields.io/static/v1?style=flat&amp;label=&amp;message=Source%20Code&amp;logo=read-the-docs&amp;color=informational" alt="Source code"></a>
+<a href="https://nuget.org/packages/FFT.COBS"><img src="https://img.shields.io/nuget/v/FFT.COBS.svg" alt="NuGet package"></a>
+<a href="https://fastfintech.github.io/FFT.COBS/"><img src="https://img.shields.io/static/v1?style=flat&amp;label=&amp;message=Documentation&amp;logo=read-the-docs&amp;color=green" alt="Full documentation"></a></p>
+<p><code>FFT.COBS</code> provides a fast, allocation-free implementation of <strong>Consistent Overhead Byte Stuffing (COBS)</strong> encoding and decoding for pipes and streams.</p>
+<p>COBS is an algorithm you can use to frame messages without ambiguity and without the performance overhead required by the common method of buffering a message and prepending a length prefix.</p>
+<p><a href="https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing">Read the full COBS spec on wikipedia</a></p>
+<div class="tabGroup" id="tabgroup_CeZOj-G++Q">
+<ul role="tablist">
+<li role="presentation">
+<a href="#tabpanel_CeZOj-G++Q_pipes" role="tab" aria-controls="tabpanel_CeZOj-G++Q_pipes" data-tab="pipes" tabindex="0" aria-selected="true">Pipes</a>
+</li>
+<li role="presentation">
+<a href="#tabpanel_CeZOj-G++Q_streams" role="tab" aria-controls="tabpanel_CeZOj-G++Q_streams" data-tab="streams" tabindex="-1">Streams</a>
+</li>
+</ul>
+<section id="tabpanel_CeZOj-G++Q_pipes" role="tabpanel" data-tab="pipes">
+
+<p>The code sample below demonstrates writing to and reading from a <code>System.IO.Pipes.Pipe</code> using <code>FFT.COBS</code>.</p>
+<p><strong>Writing</strong></p>
+<p>The <code>GetPipeLoadedWithData()</code> method demonstrates writing COBS-encoded messages to a pipe (or any <code>IBufferWriter&lt;byte&gt;</code>). In particular, it shows that messages can be written just a part at a time, and the <code>CommitMessage()</code> method is used to finish the encoding for the current message, and get ready for the next message.</p>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>The <code>COBSBufferWriter</code> must be disposed when you're finished writing in order to have it return a buffer to the <code>ArrayPool</code>. Failing to dispose it will result in memory leak.</p>
+</div>
+<p><strong>Reading</strong></p>
+<p>The remaining methods demonstrate how to consume COBS-encoded message from a <code>PipeReader</code>, including the various ways of pausing and resuming the message reading. Supported ways of pausing the reading are:</p>
+<ul>
+<li>Using the <code>PipeReader.CancelPendingRead()</code> method.</li>
+<li>Using a <code>CancellationToken</code>.</li>
+<li>Using the <code>break</code> keyword.</li>
+<li>Throwing an exception.</li>
+</ul>
+<div class="TIP">
+<h5>Tip</h5>
+<p>Using a <code>CancellationToken</code> is the only way to pause the reading whilst waiting for messages to arrive in the pipe. The other ways can be used to stop the reading only immediately after a message has been received.</p>
+</div>
+<div class="WARNING">
+<h5>Warning</h5>
+<p>The <code>Memory&lt;byte&gt;</code> variable returned by the iterator is ONLY valid inside the iterator block. You must copy or process the message data while still within the iterator block, or you will get unexpected data that you need to explain to your colleagues!</p>
+</div>
+<pre><code class="lang-csharp" name="Main">// Copyright (c) True Goodwill. All rights reserved.
+// Licensed under the MIT license. See LICENSE file in the project root for full license information.
+
+namespace FFT.COBS.Examples
+{
+  using System;
+  using System.Buffers;
+  using System.Collections.Generic;
+  using System.IO.Pipelines;
+  using System.Threading;
+  using System.Threading.Tasks;
+
+  internal class PipesExample : IExample
+  {
+    public string Name =&gt; &quot;Simple Pipe Reading Writing Example&quot;;
+
+    public async ValueTask RunAsync()
+    {
+      await SimpleReadAsync();
+      await ReadStoppingAndResumingAsync();
+      await ManualIterationAsync();
+    }
+
+    /// &lt;summary&gt;
+    /// Demonstrates simple reading of all messages in the pipe
+    /// followed by completion of the pipe reader.
+    /// &lt;/summary&gt;
+    private static async Task SimpleReadAsync()
+    {
+      var pipe = GetPipeLoadedWithData();
+      await foreach (Memory&lt;byte&gt; message in pipe.Reader.ReadCOBSMessages())
+      {
+        // Message data is invalid outside this iterator block.
+        // The same slice of memory will be overwritten for the next message,
+        // so you need to copy or process it right here.
+        Console.WriteLine($&quot;Received a message of length {message.Length}&quot;);
+      }
+
+      // If you need to &quot;complete&quot; the reader, you need to do that yourself because the
+      // &quot;ReadCOBSMessages&quot; enumerator does not.
+      await pipe.Reader.CompleteAsync();
+    }
+
+    /// &lt;summary&gt;
+    /// Demonstrates how you can read some but not all messages from a pipe,
+    /// stop, and then resume reading more messages.
+    /// Each of the techniques for exiting a foreach loop are shown.
+    /// &lt;/summary&gt;
+    private static async Task ReadStoppingAndResumingAsync()
+    {
+      var messageCount = 0;
+      var pipe = GetPipeLoadedWithData();
+
+      // In each of the examples below, the &quot;foreach&quot; language feature ensures the
+      // reader's enumerator is properly disposed.
+
+      // Use the &quot;CancelPendingRead()&quot; method to stop reading after two messages.
+      await foreach (Memory&lt;byte&gt; message in pipe.Reader.ReadCOBSMessages())
+      {
+        messageCount++;
+        if (messageCount == 2)
+          pipe.Reader.CancelPendingRead();
+      }
+
+      // Resume reading, and use a cancellation token to stop reading after the next two messages.
+      using var cts = new CancellationTokenSource();
+      await foreach (Memory&lt;byte&gt; message in pipe.Reader.ReadCOBSMessages().WithCancellation(cts.Token))
+      {
+        messageCount++;
+        if (messageCount == 4)
+          cts.Cancel();
+      }
+
+      // Resume reading, and stop reading with a &quot;break&quot; statement.
+      await foreach (Memory&lt;byte&gt; message in pipe.Reader.ReadCOBSMessages())
+      {
+        messageCount++;
+        if (messageCount == 6)
+          break;
+      }
+
+      // Resume reading, and stop reading with an exception which we swallow.
+      try
+      {
+        await foreach (Memory&lt;byte&gt; message in pipe.Reader.ReadCOBSMessages())
+        {
+          messageCount++;
+          if (messageCount == 8)
+            throw new Exception(&quot;boom&quot;);
+        }
+      }
+      catch { }
+
+      // Resume reading, all the way to the end.
+      await foreach (Memory&lt;byte&gt; message in pipe.Reader.ReadCOBSMessages())
+      {
+        messageCount++;
+      }
+
+      // If you need to &quot;complete&quot; the pipe reader, you need to do that yourself because the
+      // &quot;ReadCOBSMessages&quot; enumerator does not.
+      await pipe.Reader.CompleteAsync();
+    }
+
+    /// &lt;summary&gt;
+    /// Demonstrates manual use of the COBS reader enumerator.
+    /// Most important to note is that it MUST BE DISPOSED to avoid
+    /// creating memory leaks.
+    /// &lt;/summary&gt;
+    private static async Task ManualIterationAsync()
+    {
+      var pipe = GetPipeLoadedWithData();
+
+      // In this example, we have a using statement to ensure the enumerator
+      // is correctly disposed when we are finished with it.
+      await using IAsyncEnumerator&lt;Memory&lt;byte&gt;&gt; enumerator = pipe.Reader.ReadCOBSMessages().GetAsyncEnumerator();
+      while (await enumerator.MoveNextAsync())
+      {
+        Memory&lt;byte&gt; message = enumerator.Current;
+      }
+    }
+
+    /// &lt;summary&gt;
+    /// Writes random COBS-endoded messages to a pipe,
+    /// marks the pipe writer complete, and returns the pipe.
+    /// &lt;/summary&gt;
+    private static Pipe GetPipeLoadedWithData()
+    {
+      // Create a COBSBufferWriter that wraps another IBufferWriter&lt;byte&gt;
+      // Note that it is IDisposable, so we have handled that with a using expression.
+      var pipe = new Pipe();
+      using var cobsWriter = new COBSWriterBuffer(pipe.Writer);
+
+      // Get a bunch of messages that need to be sent with COBS encoding.
+      foreach (ReadOnlySequence&lt;byte&gt; message in Utilities.GetRandomMessages(numMessages: 10..20, numSegmentsPerMessage: 1..100))
+      {
+        // Demonstrates the fact that messages can be written a segment at a time,
+        // just as you would with any IBufferWriter&lt;byte&gt;.
+        // No need to wait until the entire message is available before writing what parts you have.
+        foreach (ReadOnlyMemory&lt;byte&gt; segment in message)
+        {
+          var span = cobsWriter.GetSpan(segment.Length);
+          segment.Span.CopyTo(span);
+          cobsWriter.Advance(segment.Length);
+        }
+
+        // Commit each message once it has been written.
+        // The allows the cobsWriter to perform end-of-message
+        // encoding and gets it ready for the next message.
+        cobsWriter.CommitMessage();
+      }
+
+      // Optionally mark the pipe writer as complete, or you can go ahead and continue
+      // using it to send more data any way you like.
+      pipe.Writer.Complete();
+
+      return pipe;
+    }
+  }
+}
+</code></pre></section>
+<section id="tabpanel_CeZOj-G++Q_streams" role="tabpanel" data-tab="streams" aria-hidden="true" hidden="hidden">
+
+<p>Streams are not implemented yet.</p>
+</section>
+</div>
+</article>
+          </div>
+          
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <div class="contribution">
+                <ul class="nav">
+                  <li>
+                    <a href="https://github.com/FastFinTech/FFT.COBS/blob/main/docfx/index.md/#L1" class="contribution-link">Improve this Doc</a>
+                  </li>
+                </ul>
+              </div>
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In This Article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+            
+            <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script type="text/javascript" src="styles/docfx.vendor.js"></script>
+    <script type="text/javascript" src="styles/docfx.js"></script>
+    <script type="text/javascript" src="styles/main.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.2/highlight.min.js"></script>
+    <script src="//unpkg.com/highlightjs-dotnetconfig@0.9.1/dist/dotnetconfig.min.js"></script>
+  </body>
+</html>

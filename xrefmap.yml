@@ -1,0 +1,547 @@
+### YamlMime:XRefMap
+sorted: true
+references:
+- uid: FFT.COBS
+  name: FFT.COBS
+  href: api/FFT.COBS.html
+  commentId: N:FFT.COBS
+  fullName: FFT.COBS
+  nameWithType: FFT.COBS
+- uid: FFT.COBS.COBSReader
+  name: COBSReader
+  href: api/FFT.COBS.COBSReader.html
+  commentId: T:FFT.COBS.COBSReader
+  fullName: FFT.COBS.COBSReader
+  nameWithType: COBSReader
+- uid: FFT.COBS.COBSReader.ReadCOBSMessages(PipeReader,CancellationToken)
+  name: ReadCOBSMessages(PipeReader, CancellationToken)
+  href: api/FFT.COBS.COBSReader.html#FFT_COBS_COBSReader_ReadCOBSMessages_PipeReader_CancellationToken_
+  commentId: M:FFT.COBS.COBSReader.ReadCOBSMessages(PipeReader,CancellationToken)
+  fullName: FFT.COBS.COBSReader.ReadCOBSMessages(PipeReader, CancellationToken)
+  nameWithType: COBSReader.ReadCOBSMessages(PipeReader, CancellationToken)
+- uid: FFT.COBS.COBSReader.ReadCOBSMessages(Stream,CancellationToken)
+  name: ReadCOBSMessages(Stream, CancellationToken)
+  href: api/FFT.COBS.COBSReader.html#FFT_COBS_COBSReader_ReadCOBSMessages_Stream_CancellationToken_
+  commentId: M:FFT.COBS.COBSReader.ReadCOBSMessages(Stream,CancellationToken)
+  fullName: FFT.COBS.COBSReader.ReadCOBSMessages(Stream, CancellationToken)
+  nameWithType: COBSReader.ReadCOBSMessages(Stream, CancellationToken)
+- uid: FFT.COBS.COBSReader.ReadCOBSMessages*
+  name: ReadCOBSMessages
+  href: api/FFT.COBS.COBSReader.html#FFT_COBS_COBSReader_ReadCOBSMessages_
+  commentId: Overload:FFT.COBS.COBSReader.ReadCOBSMessages
+  isSpec: "True"
+  fullName: FFT.COBS.COBSReader.ReadCOBSMessages
+  nameWithType: COBSReader.ReadCOBSMessages
+- uid: FFT.COBS.COBSWriterBuffer
+  name: COBSWriterBuffer
+  href: api/FFT.COBS.COBSWriterBuffer.html
+  commentId: T:FFT.COBS.COBSWriterBuffer
+  fullName: FFT.COBS.COBSWriterBuffer
+  nameWithType: COBSWriterBuffer
+- uid: FFT.COBS.COBSWriterBuffer.#ctor(IBufferWriter{System.Byte})
+  name: COBSWriterBuffer(IBufferWriter<Byte>)
+  href: api/FFT.COBS.COBSWriterBuffer.html#FFT_COBS_COBSWriterBuffer__ctor_IBufferWriter_System_Byte__
+  commentId: M:FFT.COBS.COBSWriterBuffer.#ctor(IBufferWriter{System.Byte})
+  name.vb: COBSWriterBuffer(IBufferWriter(Of Byte))
+  fullName: FFT.COBS.COBSWriterBuffer.COBSWriterBuffer(IBufferWriter<System.Byte>)
+  fullName.vb: FFT.COBS.COBSWriterBuffer.COBSWriterBuffer(IBufferWriter(Of System.Byte))
+  nameWithType: COBSWriterBuffer.COBSWriterBuffer(IBufferWriter<Byte>)
+  nameWithType.vb: COBSWriterBuffer.COBSWriterBuffer(IBufferWriter(Of Byte))
+- uid: FFT.COBS.COBSWriterBuffer.#ctor(Stream)
+  name: COBSWriterBuffer(Stream)
+  href: api/FFT.COBS.COBSWriterBuffer.html#FFT_COBS_COBSWriterBuffer__ctor_Stream_
+  commentId: M:FFT.COBS.COBSWriterBuffer.#ctor(Stream)
+  fullName: FFT.COBS.COBSWriterBuffer.COBSWriterBuffer(Stream)
+  nameWithType: COBSWriterBuffer.COBSWriterBuffer(Stream)
+- uid: FFT.COBS.COBSWriterBuffer.#ctor*
+  name: COBSWriterBuffer
+  href: api/FFT.COBS.COBSWriterBuffer.html#FFT_COBS_COBSWriterBuffer__ctor_
+  commentId: Overload:FFT.COBS.COBSWriterBuffer.#ctor
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterBuffer.COBSWriterBuffer
+  nameWithType: COBSWriterBuffer.COBSWriterBuffer
+- uid: FFT.COBS.COBSWriterBuffer.Advance(System.Int32)
+  name: Advance(Int32)
+  href: api/FFT.COBS.COBSWriterBuffer.html#FFT_COBS_COBSWriterBuffer_Advance_System_Int32_
+  commentId: M:FFT.COBS.COBSWriterBuffer.Advance(System.Int32)
+  fullName: FFT.COBS.COBSWriterBuffer.Advance(System.Int32)
+  nameWithType: COBSWriterBuffer.Advance(Int32)
+- uid: FFT.COBS.COBSWriterBuffer.Advance*
+  name: Advance
+  href: api/FFT.COBS.COBSWriterBuffer.html#FFT_COBS_COBSWriterBuffer_Advance_
+  commentId: Overload:FFT.COBS.COBSWriterBuffer.Advance
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterBuffer.Advance
+  nameWithType: COBSWriterBuffer.Advance
+- uid: FFT.COBS.COBSWriterBuffer.CommitMessage
+  name: CommitMessage()
+  href: api/FFT.COBS.COBSWriterBuffer.html#FFT_COBS_COBSWriterBuffer_CommitMessage
+  commentId: M:FFT.COBS.COBSWriterBuffer.CommitMessage
+  fullName: FFT.COBS.COBSWriterBuffer.CommitMessage()
+  nameWithType: COBSWriterBuffer.CommitMessage()
+- uid: FFT.COBS.COBSWriterBuffer.CommitMessage*
+  name: CommitMessage
+  href: api/FFT.COBS.COBSWriterBuffer.html#FFT_COBS_COBSWriterBuffer_CommitMessage_
+  commentId: Overload:FFT.COBS.COBSWriterBuffer.CommitMessage
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterBuffer.CommitMessage
+  nameWithType: COBSWriterBuffer.CommitMessage
+- uid: FFT.COBS.COBSWriterBuffer.CustomDispose
+  name: CustomDispose()
+  href: api/FFT.COBS.COBSWriterBuffer.html#FFT_COBS_COBSWriterBuffer_CustomDispose
+  commentId: M:FFT.COBS.COBSWriterBuffer.CustomDispose
+  fullName: FFT.COBS.COBSWriterBuffer.CustomDispose()
+  nameWithType: COBSWriterBuffer.CustomDispose()
+- uid: FFT.COBS.COBSWriterBuffer.CustomDispose*
+  name: CustomDispose
+  href: api/FFT.COBS.COBSWriterBuffer.html#FFT_COBS_COBSWriterBuffer_CustomDispose_
+  commentId: Overload:FFT.COBS.COBSWriterBuffer.CustomDispose
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterBuffer.CustomDispose
+  nameWithType: COBSWriterBuffer.CustomDispose
+- uid: FFT.COBS.COBSWriterBuffer.GetMemory(System.Int32)
+  name: GetMemory(Int32)
+  href: api/FFT.COBS.COBSWriterBuffer.html#FFT_COBS_COBSWriterBuffer_GetMemory_System_Int32_
+  commentId: M:FFT.COBS.COBSWriterBuffer.GetMemory(System.Int32)
+  fullName: FFT.COBS.COBSWriterBuffer.GetMemory(System.Int32)
+  nameWithType: COBSWriterBuffer.GetMemory(Int32)
+- uid: FFT.COBS.COBSWriterBuffer.GetMemory*
+  name: GetMemory
+  href: api/FFT.COBS.COBSWriterBuffer.html#FFT_COBS_COBSWriterBuffer_GetMemory_
+  commentId: Overload:FFT.COBS.COBSWriterBuffer.GetMemory
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterBuffer.GetMemory
+  nameWithType: COBSWriterBuffer.GetMemory
+- uid: FFT.COBS.COBSWriterBuffer.GetSpan(System.Int32)
+  name: GetSpan(Int32)
+  href: api/FFT.COBS.COBSWriterBuffer.html#FFT_COBS_COBSWriterBuffer_GetSpan_System_Int32_
+  commentId: M:FFT.COBS.COBSWriterBuffer.GetSpan(System.Int32)
+  fullName: FFT.COBS.COBSWriterBuffer.GetSpan(System.Int32)
+  nameWithType: COBSWriterBuffer.GetSpan(Int32)
+- uid: FFT.COBS.COBSWriterBuffer.GetSpan*
+  name: GetSpan
+  href: api/FFT.COBS.COBSWriterBuffer.html#FFT_COBS_COBSWriterBuffer_GetSpan_
+  commentId: Overload:FFT.COBS.COBSWriterBuffer.GetSpan
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterBuffer.GetSpan
+  nameWithType: COBSWriterBuffer.GetSpan
+- uid: FFT.COBS.COBSWriterStream
+  name: COBSWriterStream
+  href: api/FFT.COBS.COBSWriterStream.html
+  commentId: T:FFT.COBS.COBSWriterStream
+  fullName: FFT.COBS.COBSWriterStream
+  nameWithType: COBSWriterStream
+- uid: FFT.COBS.COBSWriterStream.#ctor(IBufferWriter{System.Byte})
+  name: COBSWriterStream(IBufferWriter<Byte>)
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream__ctor_IBufferWriter_System_Byte__
+  commentId: M:FFT.COBS.COBSWriterStream.#ctor(IBufferWriter{System.Byte})
+  name.vb: COBSWriterStream(IBufferWriter(Of Byte))
+  fullName: FFT.COBS.COBSWriterStream.COBSWriterStream(IBufferWriter<System.Byte>)
+  fullName.vb: FFT.COBS.COBSWriterStream.COBSWriterStream(IBufferWriter(Of System.Byte))
+  nameWithType: COBSWriterStream.COBSWriterStream(IBufferWriter<Byte>)
+  nameWithType.vb: COBSWriterStream.COBSWriterStream(IBufferWriter(Of Byte))
+- uid: FFT.COBS.COBSWriterStream.#ctor(Stream)
+  name: COBSWriterStream(Stream)
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream__ctor_Stream_
+  commentId: M:FFT.COBS.COBSWriterStream.#ctor(Stream)
+  fullName: FFT.COBS.COBSWriterStream.COBSWriterStream(Stream)
+  nameWithType: COBSWriterStream.COBSWriterStream(Stream)
+- uid: FFT.COBS.COBSWriterStream.#ctor*
+  name: COBSWriterStream
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream__ctor_
+  commentId: Overload:FFT.COBS.COBSWriterStream.#ctor
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.COBSWriterStream
+  nameWithType: COBSWriterStream.COBSWriterStream
+- uid: FFT.COBS.COBSWriterStream.BeginRead(System.Byte[],System.Int32,System.Int32,System.Nullable{AsyncCallback},System.Nullable{System.Object})
+  name: BeginRead(Byte[], Int32, Int32, Nullable<AsyncCallback>, Nullable<Object>)
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_BeginRead_System_Byte___System_Int32_System_Int32_System_Nullable_AsyncCallback__System_Nullable_System_Object__
+  commentId: M:FFT.COBS.COBSWriterStream.BeginRead(System.Byte[],System.Int32,System.Int32,System.Nullable{AsyncCallback},System.Nullable{System.Object})
+  name.vb: BeginRead(Byte(), Int32, Int32, Nullable(Of AsyncCallback), Nullable(Of Object))
+  fullName: FFT.COBS.COBSWriterStream.BeginRead(System.Byte[], System.Int32, System.Int32, System.Nullable<AsyncCallback>, System.Nullable<System.Object>)
+  fullName.vb: FFT.COBS.COBSWriterStream.BeginRead(System.Byte(), System.Int32, System.Int32, System.Nullable(Of AsyncCallback), System.Nullable(Of System.Object))
+  nameWithType: COBSWriterStream.BeginRead(Byte[], Int32, Int32, Nullable<AsyncCallback>, Nullable<Object>)
+  nameWithType.vb: COBSWriterStream.BeginRead(Byte(), Int32, Int32, Nullable(Of AsyncCallback), Nullable(Of Object))
+- uid: FFT.COBS.COBSWriterStream.BeginRead*
+  name: BeginRead
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_BeginRead_
+  commentId: Overload:FFT.COBS.COBSWriterStream.BeginRead
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.BeginRead
+  nameWithType: COBSWriterStream.BeginRead
+- uid: FFT.COBS.COBSWriterStream.BeginWrite(System.Byte[],System.Int32,System.Int32,System.Nullable{AsyncCallback},System.Nullable{System.Object})
+  name: BeginWrite(Byte[], Int32, Int32, Nullable<AsyncCallback>, Nullable<Object>)
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_BeginWrite_System_Byte___System_Int32_System_Int32_System_Nullable_AsyncCallback__System_Nullable_System_Object__
+  commentId: M:FFT.COBS.COBSWriterStream.BeginWrite(System.Byte[],System.Int32,System.Int32,System.Nullable{AsyncCallback},System.Nullable{System.Object})
+  name.vb: BeginWrite(Byte(), Int32, Int32, Nullable(Of AsyncCallback), Nullable(Of Object))
+  fullName: FFT.COBS.COBSWriterStream.BeginWrite(System.Byte[], System.Int32, System.Int32, System.Nullable<AsyncCallback>, System.Nullable<System.Object>)
+  fullName.vb: FFT.COBS.COBSWriterStream.BeginWrite(System.Byte(), System.Int32, System.Int32, System.Nullable(Of AsyncCallback), System.Nullable(Of System.Object))
+  nameWithType: COBSWriterStream.BeginWrite(Byte[], Int32, Int32, Nullable<AsyncCallback>, Nullable<Object>)
+  nameWithType.vb: COBSWriterStream.BeginWrite(Byte(), Int32, Int32, Nullable(Of AsyncCallback), Nullable(Of Object))
+- uid: FFT.COBS.COBSWriterStream.BeginWrite*
+  name: BeginWrite
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_BeginWrite_
+  commentId: Overload:FFT.COBS.COBSWriterStream.BeginWrite
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.BeginWrite
+  nameWithType: COBSWriterStream.BeginWrite
+- uid: FFT.COBS.COBSWriterStream.CanRead
+  name: CanRead
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_CanRead
+  commentId: P:FFT.COBS.COBSWriterStream.CanRead
+  fullName: FFT.COBS.COBSWriterStream.CanRead
+  nameWithType: COBSWriterStream.CanRead
+- uid: FFT.COBS.COBSWriterStream.CanRead*
+  name: CanRead
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_CanRead_
+  commentId: Overload:FFT.COBS.COBSWriterStream.CanRead
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.CanRead
+  nameWithType: COBSWriterStream.CanRead
+- uid: FFT.COBS.COBSWriterStream.CanSeek
+  name: CanSeek
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_CanSeek
+  commentId: P:FFT.COBS.COBSWriterStream.CanSeek
+  fullName: FFT.COBS.COBSWriterStream.CanSeek
+  nameWithType: COBSWriterStream.CanSeek
+- uid: FFT.COBS.COBSWriterStream.CanSeek*
+  name: CanSeek
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_CanSeek_
+  commentId: Overload:FFT.COBS.COBSWriterStream.CanSeek
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.CanSeek
+  nameWithType: COBSWriterStream.CanSeek
+- uid: FFT.COBS.COBSWriterStream.CanTimeout
+  name: CanTimeout
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_CanTimeout
+  commentId: P:FFT.COBS.COBSWriterStream.CanTimeout
+  fullName: FFT.COBS.COBSWriterStream.CanTimeout
+  nameWithType: COBSWriterStream.CanTimeout
+- uid: FFT.COBS.COBSWriterStream.CanTimeout*
+  name: CanTimeout
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_CanTimeout_
+  commentId: Overload:FFT.COBS.COBSWriterStream.CanTimeout
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.CanTimeout
+  nameWithType: COBSWriterStream.CanTimeout
+- uid: FFT.COBS.COBSWriterStream.CanWrite
+  name: CanWrite
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_CanWrite
+  commentId: P:FFT.COBS.COBSWriterStream.CanWrite
+  fullName: FFT.COBS.COBSWriterStream.CanWrite
+  nameWithType: COBSWriterStream.CanWrite
+- uid: FFT.COBS.COBSWriterStream.CanWrite*
+  name: CanWrite
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_CanWrite_
+  commentId: Overload:FFT.COBS.COBSWriterStream.CanWrite
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.CanWrite
+  nameWithType: COBSWriterStream.CanWrite
+- uid: FFT.COBS.COBSWriterStream.Close
+  name: Close()
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_Close
+  commentId: M:FFT.COBS.COBSWriterStream.Close
+  fullName: FFT.COBS.COBSWriterStream.Close()
+  nameWithType: COBSWriterStream.Close()
+- uid: FFT.COBS.COBSWriterStream.Close*
+  name: Close
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_Close_
+  commentId: Overload:FFT.COBS.COBSWriterStream.Close
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.Close
+  nameWithType: COBSWriterStream.Close
+- uid: FFT.COBS.COBSWriterStream.CommitMessage
+  name: CommitMessage()
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_CommitMessage
+  commentId: M:FFT.COBS.COBSWriterStream.CommitMessage
+  fullName: FFT.COBS.COBSWriterStream.CommitMessage()
+  nameWithType: COBSWriterStream.CommitMessage()
+- uid: FFT.COBS.COBSWriterStream.CommitMessage*
+  name: CommitMessage
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_CommitMessage_
+  commentId: Overload:FFT.COBS.COBSWriterStream.CommitMessage
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.CommitMessage
+  nameWithType: COBSWriterStream.CommitMessage
+- uid: FFT.COBS.COBSWriterStream.CopyTo(Stream,System.Int32)
+  name: CopyTo(Stream, Int32)
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_CopyTo_Stream_System_Int32_
+  commentId: M:FFT.COBS.COBSWriterStream.CopyTo(Stream,System.Int32)
+  fullName: FFT.COBS.COBSWriterStream.CopyTo(Stream, System.Int32)
+  nameWithType: COBSWriterStream.CopyTo(Stream, Int32)
+- uid: FFT.COBS.COBSWriterStream.CopyTo*
+  name: CopyTo
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_CopyTo_
+  commentId: Overload:FFT.COBS.COBSWriterStream.CopyTo
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.CopyTo
+  nameWithType: COBSWriterStream.CopyTo
+- uid: FFT.COBS.COBSWriterStream.CopyToAsync(Stream,System.Int32,CancellationToken)
+  name: CopyToAsync(Stream, Int32, CancellationToken)
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_CopyToAsync_Stream_System_Int32_CancellationToken_
+  commentId: M:FFT.COBS.COBSWriterStream.CopyToAsync(Stream,System.Int32,CancellationToken)
+  fullName: FFT.COBS.COBSWriterStream.CopyToAsync(Stream, System.Int32, CancellationToken)
+  nameWithType: COBSWriterStream.CopyToAsync(Stream, Int32, CancellationToken)
+- uid: FFT.COBS.COBSWriterStream.CopyToAsync*
+  name: CopyToAsync
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_CopyToAsync_
+  commentId: Overload:FFT.COBS.COBSWriterStream.CopyToAsync
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.CopyToAsync
+  nameWithType: COBSWriterStream.CopyToAsync
+- uid: FFT.COBS.COBSWriterStream.EndRead(IAsyncResult)
+  name: EndRead(IAsyncResult)
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_EndRead_IAsyncResult_
+  commentId: M:FFT.COBS.COBSWriterStream.EndRead(IAsyncResult)
+  fullName: FFT.COBS.COBSWriterStream.EndRead(IAsyncResult)
+  nameWithType: COBSWriterStream.EndRead(IAsyncResult)
+- uid: FFT.COBS.COBSWriterStream.EndRead*
+  name: EndRead
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_EndRead_
+  commentId: Overload:FFT.COBS.COBSWriterStream.EndRead
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.EndRead
+  nameWithType: COBSWriterStream.EndRead
+- uid: FFT.COBS.COBSWriterStream.EndWrite(IAsyncResult)
+  name: EndWrite(IAsyncResult)
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_EndWrite_IAsyncResult_
+  commentId: M:FFT.COBS.COBSWriterStream.EndWrite(IAsyncResult)
+  fullName: FFT.COBS.COBSWriterStream.EndWrite(IAsyncResult)
+  nameWithType: COBSWriterStream.EndWrite(IAsyncResult)
+- uid: FFT.COBS.COBSWriterStream.EndWrite*
+  name: EndWrite
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_EndWrite_
+  commentId: Overload:FFT.COBS.COBSWriterStream.EndWrite
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.EndWrite
+  nameWithType: COBSWriterStream.EndWrite
+- uid: FFT.COBS.COBSWriterStream.Flush
+  name: Flush()
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_Flush
+  commentId: M:FFT.COBS.COBSWriterStream.Flush
+  fullName: FFT.COBS.COBSWriterStream.Flush()
+  nameWithType: COBSWriterStream.Flush()
+- uid: FFT.COBS.COBSWriterStream.Flush*
+  name: Flush
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_Flush_
+  commentId: Overload:FFT.COBS.COBSWriterStream.Flush
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.Flush
+  nameWithType: COBSWriterStream.Flush
+- uid: FFT.COBS.COBSWriterStream.FlushAsync(CancellationToken)
+  name: FlushAsync(CancellationToken)
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_FlushAsync_CancellationToken_
+  commentId: M:FFT.COBS.COBSWriterStream.FlushAsync(CancellationToken)
+  fullName: FFT.COBS.COBSWriterStream.FlushAsync(CancellationToken)
+  nameWithType: COBSWriterStream.FlushAsync(CancellationToken)
+- uid: FFT.COBS.COBSWriterStream.FlushAsync*
+  name: FlushAsync
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_FlushAsync_
+  commentId: Overload:FFT.COBS.COBSWriterStream.FlushAsync
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.FlushAsync
+  nameWithType: COBSWriterStream.FlushAsync
+- uid: FFT.COBS.COBSWriterStream.Length
+  name: Length
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_Length
+  commentId: P:FFT.COBS.COBSWriterStream.Length
+  fullName: FFT.COBS.COBSWriterStream.Length
+  nameWithType: COBSWriterStream.Length
+- uid: FFT.COBS.COBSWriterStream.Length*
+  name: Length
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_Length_
+  commentId: Overload:FFT.COBS.COBSWriterStream.Length
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.Length
+  nameWithType: COBSWriterStream.Length
+- uid: FFT.COBS.COBSWriterStream.Position
+  name: Position
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_Position
+  commentId: P:FFT.COBS.COBSWriterStream.Position
+  fullName: FFT.COBS.COBSWriterStream.Position
+  nameWithType: COBSWriterStream.Position
+- uid: FFT.COBS.COBSWriterStream.Position*
+  name: Position
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_Position_
+  commentId: Overload:FFT.COBS.COBSWriterStream.Position
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.Position
+  nameWithType: COBSWriterStream.Position
+- uid: FFT.COBS.COBSWriterStream.Read(Span{System.Byte})
+  name: Read(Span<Byte>)
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_Read_Span_System_Byte__
+  commentId: M:FFT.COBS.COBSWriterStream.Read(Span{System.Byte})
+  name.vb: Read(Span(Of Byte))
+  fullName: FFT.COBS.COBSWriterStream.Read(Span<System.Byte>)
+  fullName.vb: FFT.COBS.COBSWriterStream.Read(Span(Of System.Byte))
+  nameWithType: COBSWriterStream.Read(Span<Byte>)
+  nameWithType.vb: COBSWriterStream.Read(Span(Of Byte))
+- uid: FFT.COBS.COBSWriterStream.Read(System.Byte[],System.Int32,System.Int32)
+  name: Read(Byte[], Int32, Int32)
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_Read_System_Byte___System_Int32_System_Int32_
+  commentId: M:FFT.COBS.COBSWriterStream.Read(System.Byte[],System.Int32,System.Int32)
+  name.vb: Read(Byte(), Int32, Int32)
+  fullName: FFT.COBS.COBSWriterStream.Read(System.Byte[], System.Int32, System.Int32)
+  fullName.vb: FFT.COBS.COBSWriterStream.Read(System.Byte(), System.Int32, System.Int32)
+  nameWithType: COBSWriterStream.Read(Byte[], Int32, Int32)
+  nameWithType.vb: COBSWriterStream.Read(Byte(), Int32, Int32)
+- uid: FFT.COBS.COBSWriterStream.Read*
+  name: Read
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_Read_
+  commentId: Overload:FFT.COBS.COBSWriterStream.Read
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.Read
+  nameWithType: COBSWriterStream.Read
+- uid: FFT.COBS.COBSWriterStream.ReadAsync(Memory{System.Byte},CancellationToken)
+  name: ReadAsync(Memory<Byte>, CancellationToken)
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_ReadAsync_Memory_System_Byte__CancellationToken_
+  commentId: M:FFT.COBS.COBSWriterStream.ReadAsync(Memory{System.Byte},CancellationToken)
+  name.vb: ReadAsync(Memory(Of Byte), CancellationToken)
+  fullName: FFT.COBS.COBSWriterStream.ReadAsync(Memory<System.Byte>, CancellationToken)
+  fullName.vb: FFT.COBS.COBSWriterStream.ReadAsync(Memory(Of System.Byte), CancellationToken)
+  nameWithType: COBSWriterStream.ReadAsync(Memory<Byte>, CancellationToken)
+  nameWithType.vb: COBSWriterStream.ReadAsync(Memory(Of Byte), CancellationToken)
+- uid: FFT.COBS.COBSWriterStream.ReadAsync(System.Byte[],System.Int32,System.Int32,CancellationToken)
+  name: ReadAsync(Byte[], Int32, Int32, CancellationToken)
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_ReadAsync_System_Byte___System_Int32_System_Int32_CancellationToken_
+  commentId: M:FFT.COBS.COBSWriterStream.ReadAsync(System.Byte[],System.Int32,System.Int32,CancellationToken)
+  name.vb: ReadAsync(Byte(), Int32, Int32, CancellationToken)
+  fullName: FFT.COBS.COBSWriterStream.ReadAsync(System.Byte[], System.Int32, System.Int32, CancellationToken)
+  fullName.vb: FFT.COBS.COBSWriterStream.ReadAsync(System.Byte(), System.Int32, System.Int32, CancellationToken)
+  nameWithType: COBSWriterStream.ReadAsync(Byte[], Int32, Int32, CancellationToken)
+  nameWithType.vb: COBSWriterStream.ReadAsync(Byte(), Int32, Int32, CancellationToken)
+- uid: FFT.COBS.COBSWriterStream.ReadAsync*
+  name: ReadAsync
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_ReadAsync_
+  commentId: Overload:FFT.COBS.COBSWriterStream.ReadAsync
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.ReadAsync
+  nameWithType: COBSWriterStream.ReadAsync
+- uid: FFT.COBS.COBSWriterStream.ReadByte
+  name: ReadByte()
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_ReadByte
+  commentId: M:FFT.COBS.COBSWriterStream.ReadByte
+  fullName: FFT.COBS.COBSWriterStream.ReadByte()
+  nameWithType: COBSWriterStream.ReadByte()
+- uid: FFT.COBS.COBSWriterStream.ReadByte*
+  name: ReadByte
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_ReadByte_
+  commentId: Overload:FFT.COBS.COBSWriterStream.ReadByte
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.ReadByte
+  nameWithType: COBSWriterStream.ReadByte
+- uid: FFT.COBS.COBSWriterStream.ReadTimeout
+  name: ReadTimeout
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_ReadTimeout
+  commentId: P:FFT.COBS.COBSWriterStream.ReadTimeout
+  fullName: FFT.COBS.COBSWriterStream.ReadTimeout
+  nameWithType: COBSWriterStream.ReadTimeout
+- uid: FFT.COBS.COBSWriterStream.ReadTimeout*
+  name: ReadTimeout
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_ReadTimeout_
+  commentId: Overload:FFT.COBS.COBSWriterStream.ReadTimeout
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.ReadTimeout
+  nameWithType: COBSWriterStream.ReadTimeout
+- uid: FFT.COBS.COBSWriterStream.Seek(System.Int64,SeekOrigin)
+  name: Seek(Int64, SeekOrigin)
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_Seek_System_Int64_SeekOrigin_
+  commentId: M:FFT.COBS.COBSWriterStream.Seek(System.Int64,SeekOrigin)
+  fullName: FFT.COBS.COBSWriterStream.Seek(System.Int64, SeekOrigin)
+  nameWithType: COBSWriterStream.Seek(Int64, SeekOrigin)
+- uid: FFT.COBS.COBSWriterStream.Seek*
+  name: Seek
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_Seek_
+  commentId: Overload:FFT.COBS.COBSWriterStream.Seek
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.Seek
+  nameWithType: COBSWriterStream.Seek
+- uid: FFT.COBS.COBSWriterStream.SetLength(System.Int64)
+  name: SetLength(Int64)
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_SetLength_System_Int64_
+  commentId: M:FFT.COBS.COBSWriterStream.SetLength(System.Int64)
+  fullName: FFT.COBS.COBSWriterStream.SetLength(System.Int64)
+  nameWithType: COBSWriterStream.SetLength(Int64)
+- uid: FFT.COBS.COBSWriterStream.SetLength*
+  name: SetLength
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_SetLength_
+  commentId: Overload:FFT.COBS.COBSWriterStream.SetLength
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.SetLength
+  nameWithType: COBSWriterStream.SetLength
+- uid: FFT.COBS.COBSWriterStream.Write(ReadOnlySpan{System.Byte})
+  name: Write(ReadOnlySpan<Byte>)
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_Write_ReadOnlySpan_System_Byte__
+  commentId: M:FFT.COBS.COBSWriterStream.Write(ReadOnlySpan{System.Byte})
+  name.vb: Write(ReadOnlySpan(Of Byte))
+  fullName: FFT.COBS.COBSWriterStream.Write(ReadOnlySpan<System.Byte>)
+  fullName.vb: FFT.COBS.COBSWriterStream.Write(ReadOnlySpan(Of System.Byte))
+  nameWithType: COBSWriterStream.Write(ReadOnlySpan<Byte>)
+  nameWithType.vb: COBSWriterStream.Write(ReadOnlySpan(Of Byte))
+- uid: FFT.COBS.COBSWriterStream.Write(System.Byte[],System.Int32,System.Int32)
+  name: Write(Byte[], Int32, Int32)
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_Write_System_Byte___System_Int32_System_Int32_
+  commentId: M:FFT.COBS.COBSWriterStream.Write(System.Byte[],System.Int32,System.Int32)
+  name.vb: Write(Byte(), Int32, Int32)
+  fullName: FFT.COBS.COBSWriterStream.Write(System.Byte[], System.Int32, System.Int32)
+  fullName.vb: FFT.COBS.COBSWriterStream.Write(System.Byte(), System.Int32, System.Int32)
+  nameWithType: COBSWriterStream.Write(Byte[], Int32, Int32)
+  nameWithType.vb: COBSWriterStream.Write(Byte(), Int32, Int32)
+- uid: FFT.COBS.COBSWriterStream.Write*
+  name: Write
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_Write_
+  commentId: Overload:FFT.COBS.COBSWriterStream.Write
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.Write
+  nameWithType: COBSWriterStream.Write
+- uid: FFT.COBS.COBSWriterStream.WriteAsync(ReadOnlyMemory{System.Byte},CancellationToken)
+  name: WriteAsync(ReadOnlyMemory<Byte>, CancellationToken)
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_WriteAsync_ReadOnlyMemory_System_Byte__CancellationToken_
+  commentId: M:FFT.COBS.COBSWriterStream.WriteAsync(ReadOnlyMemory{System.Byte},CancellationToken)
+  name.vb: WriteAsync(ReadOnlyMemory(Of Byte), CancellationToken)
+  fullName: FFT.COBS.COBSWriterStream.WriteAsync(ReadOnlyMemory<System.Byte>, CancellationToken)
+  fullName.vb: FFT.COBS.COBSWriterStream.WriteAsync(ReadOnlyMemory(Of System.Byte), CancellationToken)
+  nameWithType: COBSWriterStream.WriteAsync(ReadOnlyMemory<Byte>, CancellationToken)
+  nameWithType.vb: COBSWriterStream.WriteAsync(ReadOnlyMemory(Of Byte), CancellationToken)
+- uid: FFT.COBS.COBSWriterStream.WriteAsync(System.Byte[],System.Int32,System.Int32,CancellationToken)
+  name: WriteAsync(Byte[], Int32, Int32, CancellationToken)
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_WriteAsync_System_Byte___System_Int32_System_Int32_CancellationToken_
+  commentId: M:FFT.COBS.COBSWriterStream.WriteAsync(System.Byte[],System.Int32,System.Int32,CancellationToken)
+  name.vb: WriteAsync(Byte(), Int32, Int32, CancellationToken)
+  fullName: FFT.COBS.COBSWriterStream.WriteAsync(System.Byte[], System.Int32, System.Int32, CancellationToken)
+  fullName.vb: FFT.COBS.COBSWriterStream.WriteAsync(System.Byte(), System.Int32, System.Int32, CancellationToken)
+  nameWithType: COBSWriterStream.WriteAsync(Byte[], Int32, Int32, CancellationToken)
+  nameWithType.vb: COBSWriterStream.WriteAsync(Byte(), Int32, Int32, CancellationToken)
+- uid: FFT.COBS.COBSWriterStream.WriteAsync*
+  name: WriteAsync
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_WriteAsync_
+  commentId: Overload:FFT.COBS.COBSWriterStream.WriteAsync
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.WriteAsync
+  nameWithType: COBSWriterStream.WriteAsync
+- uid: FFT.COBS.COBSWriterStream.WriteByte(System.Byte)
+  name: WriteByte(Byte)
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_WriteByte_System_Byte_
+  commentId: M:FFT.COBS.COBSWriterStream.WriteByte(System.Byte)
+  fullName: FFT.COBS.COBSWriterStream.WriteByte(System.Byte)
+  nameWithType: COBSWriterStream.WriteByte(Byte)
+- uid: FFT.COBS.COBSWriterStream.WriteByte*
+  name: WriteByte
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_WriteByte_
+  commentId: Overload:FFT.COBS.COBSWriterStream.WriteByte
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.WriteByte
+  nameWithType: COBSWriterStream.WriteByte
+- uid: FFT.COBS.COBSWriterStream.WriteTimeout
+  name: WriteTimeout
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_WriteTimeout
+  commentId: P:FFT.COBS.COBSWriterStream.WriteTimeout
+  fullName: FFT.COBS.COBSWriterStream.WriteTimeout
+  nameWithType: COBSWriterStream.WriteTimeout
+- uid: FFT.COBS.COBSWriterStream.WriteTimeout*
+  name: WriteTimeout
+  href: api/FFT.COBS.COBSWriterStream.html#FFT_COBS_COBSWriterStream_WriteTimeout_
+  commentId: Overload:FFT.COBS.COBSWriterStream.WriteTimeout
+  isSpec: "True"
+  fullName: FFT.COBS.COBSWriterStream.WriteTimeout
+  nameWithType: COBSWriterStream.WriteTimeout
