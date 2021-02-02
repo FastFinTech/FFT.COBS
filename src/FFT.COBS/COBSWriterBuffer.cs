@@ -5,6 +5,8 @@ namespace FFT.COBS
 {
   using System;
   using System.Buffers;
+  using System.IO;
+  using System.IO.Pipelines;
   using System.Runtime.CompilerServices;
   using FFT.Disposables;
   using static System.Math;
@@ -13,7 +15,7 @@ namespace FFT.COBS
   /// Provides an implementation for writing COBS-encoded messages to an <see cref="IBufferWriter{T}"/>.
   /// https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing.
   /// </summary>
-  public sealed class COBSBufferWriter : DisposeBase, IBufferWriter<byte>
+  public sealed class COBSWriterBuffer : DisposeBase, IBufferWriter<byte>
   {
     // The <see cref="IBufferWriter{T}"/> that the encoded messages are written to.
     private readonly IBufferWriter<byte> _innerWriter;
@@ -24,12 +26,25 @@ namespace FFT.COBS
     private int _end; // end of cached data + 1, so it's the beginning place to write new data.
 
     /// <summary>
-    /// Initializes a new instance of the <see cref="COBSBufferWriter"/> class.
+    /// Initializes a new instance of the <see cref="COBSWriterBuffer"/> class.
     /// </summary>
     /// <param name="innerWriter">The <see cref="IBufferWriter{T}"/> that the encoded messages are written to.</param>
-    public COBSBufferWriter(IBufferWriter<byte> innerWriter)
+    public COBSWriterBuffer(IBufferWriter<byte> innerWriter)
     {
       _innerWriter = innerWriter;
+      _buffer = ArrayPool<byte>.Shared.Rent(1024);
+      _bufferSize = _buffer.Length;
+      _start = 0;
+      _end = 0;
+    }
+
+    /// <summary>
+    /// Initializes a new instance of the <see cref="COBSWriterBuffer"/> class.
+    /// </summary>
+    /// <param name="stream">The <see cref="Stream"/> that the encoded messages are written to.</param>
+    public COBSWriterBuffer(Stream stream)
+    {
+      _innerWriter = PipeWriter.Create(stream);
       _buffer = ArrayPool<byte>.Shared.Rent(1024);
       _bufferSize = _buffer.Length;
       _start = 0;
@@ -71,6 +86,7 @@ namespace FFT.COBS
     }
 
     /// <inheritdoc/>
+    [MethodImpl(MethodImplOptions.AggressiveInlining)]
     public void Advance(int count)
     {
       _end += count;

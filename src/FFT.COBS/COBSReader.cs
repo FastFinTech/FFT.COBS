@@ -6,6 +6,7 @@ namespace FFT.COBS
   using System;
   using System.Buffers;
   using System.Collections.Generic;
+  using System.IO;
   using System.IO.Pipelines;
   using System.Runtime.CompilerServices;
   using System.Threading;
@@ -15,7 +16,7 @@ namespace FFT.COBS
   /// Provides methods for reading COBS-encoded messages from a <see cref="PipeReader"/>.
   /// https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing.
   /// </summary>
-  public static class COBSBufferReader
+  public static class COBSReader
   {
     /// <summary>
     /// Reads COBS-encoded messages from <paramref name="reader"/> until all data has been consumed and the pipe reader is completed,
@@ -120,6 +121,22 @@ namespace FFT.COBS
           insertZero = header != 255;
         }
       }
+    }
+
+    /// <summary>
+    /// Reads COBS-encoded messages from <paramref name="stream"/> until all data has been consumed,
+    /// or until the enumeration is canceled by any of the methods demonstrated in the FFT.COBS.Examples project.
+    /// https://en.wikipedia.org/wiki/Consistent_Overhead_Byte_Stuffing.
+    /// </summary>
+    /// <param name="stream">The <see cref="Stream"/> that COBS-encoded messages will be read from.</param>
+    /// <param name="cancellationToken">
+    /// When canceled, the message reading stops. No exception is thrown to the using code.
+    /// </param>
+    public static async IAsyncEnumerable<Memory<byte>> ReadCOBSMessages(this Stream stream, [EnumeratorCancellation] CancellationToken cancellationToken)
+    {
+      var reader = PipeReader.Create(stream);
+      await foreach (var message in reader.ReadCOBSMessages(cancellationToken))
+        yield return message;
     }
   }
 }

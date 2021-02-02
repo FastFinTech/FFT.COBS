@@ -129,7 +129,7 @@ namespace FFT.COBS.Examples
       // Create a COBSBufferWriter that wraps another IBufferWriter<byte>
       // Note that it is IDisposable, so we have handled that with a using expression.
       var pipe = new Pipe();
-      using var cobsWriter = new COBSBufferWriter(pipe.Writer);
+      using var cobsWriter = new COBSWriterBuffer(pipe.Writer);
 
       // Get a bunch of messages that need to be sent with COBS encoding.
       foreach (ReadOnlySequence<byte> message in Utilities.GetRandomMessages(numMessages: 10..20, numSegmentsPerMessage: 1..100))

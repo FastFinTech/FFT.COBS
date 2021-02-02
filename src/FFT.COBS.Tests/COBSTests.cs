@@ -69,7 +69,7 @@ namespace FFT.COBS.Tests
       foreach (var (data, encoded) in _tests)
       {
         var pipe = new Pipe();
-        using var writer = new COBSBufferWriter(pipe.Writer);
+        using var writer = new COBSWriterBuffer(pipe.Writer);
         data.AsSpan().CopyTo(writer.GetSpan(data.Length));
         writer.Advance(data.Length);
         writer.CommitMessage();
@@ -158,7 +158,7 @@ namespace FFT.COBS.Tests
     private static PipeReader GetLoadedPipeReader()
     {
       var pipe = new Pipe();
-      using var writer = new COBSBufferWriter(pipe.Writer);
+      using var writer = new COBSWriterBuffer(pipe.Writer);
       foreach (var (data, _) in _tests)
       {
         data.AsSpan().CopyTo(writer.GetSpan(data.Length));
