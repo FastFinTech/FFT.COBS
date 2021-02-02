@@ -9,6 +9,7 @@ namespace FFT.COBS
   using System.IO.Pipelines;
   using System.Runtime.CompilerServices;
   using System.Threading;
+  using System.Threading.Tasks;
 
   /// <summary>
   /// Provides methods for reading COBS-encoded messages from a <see cref="PipeReader"/>.

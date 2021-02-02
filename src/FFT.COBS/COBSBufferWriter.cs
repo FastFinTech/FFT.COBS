@@ -30,7 +30,7 @@ namespace FFT.COBS
     public COBSBufferWriter(IBufferWriter<byte> innerWriter)
     {
       _innerWriter = innerWriter;
-      _buffer = ArrayPool<byte>.Shared.Rent(512);
+      _buffer = ArrayPool<byte>.Shared.Rent(1024);
       _bufferSize = _buffer.Length;
       _start = 0;
       _end = 0;
@@ -89,12 +89,9 @@ namespace FFT.COBS
     }
 
     /// <inheritdoc/>
-    protected override void CustomDispose(bool disposing)
+    protected override void CustomDispose()
     {
-      if (disposing)
-      {
-        ArrayPool<byte>.Shared.Return(_buffer);
-      }
+      ArrayPool<byte>.Shared.Return(_buffer);
     }
 
     private void EnsureSpace(int sizeHint)
